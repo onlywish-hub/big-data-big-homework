@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <script src="../static/echarts.js"></script>       <!--引入文件-->
+</head>
+<body>
+<div id="main" style="width: 1000px;height:600px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    //    [('中国', 424), ('美国', 320), ('俄罗斯', 251), ('空间站', 215),('国家', 200),
+    //    ('周劼', 185), ('国际', 179), ('企业', 163), ('发展', 125), ('可能', 122)] 排序得到的数据
+    // 指定图表的配置项和数据
+    var xDataArr = ['中国','美国','俄罗斯','空间站','国家','周劼','国际','企业','发展','可能']
+    var yDataArr = [424, 320, 251, 215, 200, 185, 179, 163, 125, 122]
+    var option = {
+        title: {
+            text: '词频前20--柱状图',
+            top:'1%',
+            left:'10%'
+        },
+        tooltip: {
+            trigger:'axis',
+            triggerOn: 'click',
+            formatter: function (res) {
+                return res[0].name + res[0].data
+            }
+        },
+        toolbox:{
+          feature:{
+              saveAsImage: {},//导出图片
+              dataView: {},//数据视图
+              restore:{},//重置
+              dataZoom:{},//区域缩放
+              magicType: {
+                  type:['bar','line','pie']
+              }//动态类型图表转换
+          }
+        },
+
+        legend: {
+            data: ['词频']
+        },
+        xAxis: {
+            data: xDataArr
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '词频',
+                type: 'bar',
+                data: yDataArr,
+                label: {
+                    show: true
+                }
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
