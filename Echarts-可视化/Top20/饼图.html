@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="../static/echarts.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 1000px;height:600px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    //    [('中国', 424), ('美国', 320), ('俄罗斯', 251), ('空间站', 215), ('国家', 200), ('周劼', 185),
+    //    ('国际', 179), ('企业', 163), ('发展', 125), ('可能', 122), ('报道', 122), ('问题', 104),('经济', 103),
+    //    ('德国', 102), ('日本', 102), ('佩洛西', 93), ('乌克兰', 89), ('江西', 85), ('情况', 83), ('提供', 82)]  排序得到的数据
+    // 指定图表的配置项和数据
+    var pieData = [
+        {name: '中国',value: 424},       {name: '美国',value: 320},
+        {name: '俄罗斯',value: 251},       {name: '空间站',value: 215},
+        {name: '国家',value: 200},      {name: '周劼',value: 185},
+        {name: '国际',value: 179},        {name: '企业',value: 163},
+        {name: '发展',value: 125},        {name: '可能',value: 122},
+        {name: '报道',value: 122},        {name: '问题',value: 104},
+        {name: '经济',value: 103},      {name: '德国',value: 102},
+        {name: '日本',value: 102},        {name: '佩洛西',value: 93},
+        {name: '乌克兰',value: 89},        {name: '江西',value: 85},
+        {name: '情况',value: 83},        {name: '提供',value: 82},
+    ]
+    var option = {
+        title: {
+            text: '词频前20--饼图',
+            top:'1%',
+            left:'10%'
+        },
+        tooltip: {
+            triggerOn: 'click'
+        },
+        series: [
+            {
+                type: 'pie',
+                data: pieData,
+                label: {//饼图文字的显示
+                    formatter: function (res) {
+                        return res.name + ' 出现次数' + res.value + "次\n占总量" + res.percent+'%'
+                    }
+                }
+            }
+        ],
+        selectedMode: 'single' //选中效果
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

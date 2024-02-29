@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="../static/echarts.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 1500px;height:600px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    //    [('中国', 424), ('美国', 320), ('俄罗斯', 251), ('空间站', 215), ('国家', 200), ('周劼', 185),
+    //    ('国际', 179), ('企业', 163), ('发展', 125), ('可能', 122), ('报道', 122), ('问题', 104),('经济', 103),
+    //    ('德国', 102), ('日本', 102), ('佩洛西', 93), ('乌克兰', 89), ('江西', 85), ('情况', 83), ('提供', 82)] 排序得到的数据
+    // 指定图表的配置项和数据
+    var xDataArr = ['中国','美国','俄罗斯','空间站','国家','周劼','国际','企业','发展','可能',
+                    '报道','问题','经济','德国','日本','佩洛西','乌克兰','江西','情况','提供']
+    var yDataArr = [424, 320, 251, 215, 200, 185, 179, 163, 125, 122, 122, 104, 103, 102, 102, 93, 89, 85, 83, 82]
+    var option = {
+        title: {
+            text: '词频前20--折线图',
+            top:'1%',
+            left:'10%'
+        },
+        tooltip: {
+            triggerOn: 'click'
+        },
+        xAxis: {
+            data: xDataArr,
+            type: 'category',
+            boundaryGap: 'false'
+        },
+        yAxis: {
+            type: 'value',
+            scale:"true"
+        },
+        series: [
+            {
+                name: '单词',
+                type: 'line',
+                data: yDataArr,
+                label: {
+                  show: true
+                },
+                markPoint: {
+                    data: [
+                        {
+                            type: 'max'
+                        },
+                        {
+                            type: 'min'
+                        }
+                    ]
+                },
+                markLine: {
+                    data: [
+                        {
+                            type: 'average'
+                        }
+                    ]
+                }
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
