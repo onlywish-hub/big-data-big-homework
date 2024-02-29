@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="../static/echarts.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 1000px;height:600px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var pieData = [
+        {name: '中国',value: 424},
+        {name: '美国',value: 320},
+        {name: '俄罗斯',value: 251},
+        {name: '空间站',value: 215},
+        {name: '国家',value: 200}
+    ]
+    var option = {
+        title: {
+            text: '词频前5--圆环图',
+            top:'1%',
+            left:'10%'
+        },
+        tooltip: {
+            triggerOn: 'click'
+        },
+        series: [
+            {
+                type: 'pie',
+                radius: ['50%','85%'], //圆环图
+                data: pieData,
+                label: {//文字的显示
+                    formatter: function (res) {
+                        return res.name + ' 出现次数' + res.value + "次\n占总量" + res.percent+'%'
+                    }
+                }
+            }
+        ],
+        selectedMode: 'single' //选中效果
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
