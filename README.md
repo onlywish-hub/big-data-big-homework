@@ -4,20 +4,21 @@
 本课题为信息爬取字数及可视化，利用爬虫技术爬取任一门户网站新闻栏目一定时间段内的新闻信息，保存为一个或多个文件并上传到Hadoop平台以本人学号命名的文件夹下；利用MapReduce框架编程完成字数统计；利用Echarts或其他可视化平台，使用四种不同可视化效果分别展示出现频次前5、前10、前20、前50的单词可视化效果网页。
 
 #### 软件架构
-软件架构说明
+     本课题中涉及到的主要技术有：MapReduce框架编程进行字数统计、Python编程使用selenium库爬取网站动态新闻、Python编程对文本分词处理、Python编程对词频排序、利用Echarts平台展示词语可视化效果网页。
+     开发环境：Linux系统、Hadoop平台、Echarts平台、Python环境
+     软件工具：Pycharm 、Anaconda 、VMware Workstation Pro
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  拉取代码到本地，使用pycharm打开
+
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  视频讲解参考：https://www.bilibili.com/video/BV1Yg411x7db/
+2.  博客细节参考：https://blog.csdn.net/m0_59310933/article/details/131205216
+
 
 #### 参与贡献
 
@@ -26,12 +27,3 @@
 3.  提交代码
 4.  新建 Pull Request
 
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
