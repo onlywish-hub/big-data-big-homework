@@ -4,7 +4,12 @@
 本课题为信息爬取字数及可视化，利用爬虫技术爬取任一门户网站新闻栏目一定时间段内的新闻信息，保存为一个或多个文件并上传到Hadoop平台以本人学号命名的文件夹下；利用MapReduce框架编程完成字数统计；利用Echarts或其他可视化平台，使用四种不同可视化效果分别展示出现频次前5、前10、前20、前50的单词可视化效果网页。
 
 #### 软件架构
-     本课题中涉及到的主要技术有：MapReduce框架编程进行字数统计、Python编程使用selenium库爬取网站动态新闻、Python编程对文本分词处理、Python编程对词频排序、利用Echarts平台展示词语可视化效果网页。
+     本课题中涉及到的主要技术有：
+        MapReduce框架编程进行字数统计、
+        Python编程使用selenium库爬取网站动态新闻、
+        Python编程对文本分词处理、
+        Python编程对词频排序、
+        利用Echarts平台展示词语可视化效果网页。
      开发环境：Linux系统、Hadoop平台、Echarts平台、Python环境
      软件工具：Pycharm 、Anaconda 、VMware Workstation Pro
 
