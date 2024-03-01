@@ -34,7 +34,7 @@
 - 2.1、首先查看浏览器的版本
 
 
-- 2.2、看到对应浏览器版本，选择下载。
+- 2.2、看到对应浏览器版本，选择下载。网址：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/?form=MA13LH#downloads
 
 
 - 然后要把压缩包解压出来得到msedgedriver.exe，文件名更改为MicrosoftWebDriver.exe。把它放入和你python解释器同级的文件夹中
