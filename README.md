@@ -37,7 +37,7 @@
 - 2.2、看到对应浏览器版本，选择下载。网址：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/?form=MA13LH#downloads
 
 
-- 然后要把压缩包解压出来得到msedgedriver.exe，文件名更改为MicrosoftWebDriver.exe。把它放入和你python解释器同级的文件夹中
+- 然后要把压缩包解压出来得到msedgedriver.exe，将其直接放入A-代码与文件目录里即可。或者文件名更改为MicrosoftWebDriver.exe。把它放入和你python解释器同级的文件夹中
 
 ##### 3、都安装完毕此时就可以正常使用了，注意在分词完毕后，是使用到了Hadoop平台，利用MapReduce框架编写java程序，打成jar包，运行可执行jar包得到统计词频的。考虑到适用性，这里加入了一个python脚本词频统计.py。可以利用它模拟执行jhadoop平台WordCount.jar程序功能。词频统计结果输出为out.txt,可在程序中自行修改输出名字，在词频排序程序中要注意用的文件是哪个，改为out.txt（你修改的）即可
 
