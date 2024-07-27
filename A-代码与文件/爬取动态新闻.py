@@ -12,7 +12,7 @@ import time
 
 def getCon(v):
     print("----------------------华丽的分割线----------------------")
-    print("开始运行~")
+    print("时间到，开始运行~")
     browser = webdriver.Edge()
     browser.get('https://www.ifeng.com')
     browser.implicitly_wait(1800)  # 默认300秒
@@ -33,7 +33,8 @@ def getCon(v):
             browser.get(htt)
             text = browser.page_source
             ee = etree.HTML(text)
-            lis = ee.xpath('//*[@id="root"]/div/div[2]/div[2]/div/div[1]/div/div/div[1]')
+            # lis = ee.xpath('//*[@id="root"]/div/div[2]/div[2]/div/div[1]/div/div/div[1]') 这个是原来的，若有链接，但没有输出文本，只要修改这个就行
+            lis = ee.xpath('//*[@id="root"]/div/div[2]/div[2]/div/div[1]/div/div/div/div[1]')
             for j in lis:
                 ls.append(j.xpath('./p/text()'))
         print(con)
@@ -47,9 +48,12 @@ def getCon(v):
 
 
 def main():     #建议将 h 设置为0或6或12或18 获取新闻文本几乎不会重复
-    h = 23
-    m = 45
-    v = 11  #文件名后缀起始编号，0
+    print("开始准备爬取了，等待时间到达指定时间~~~")
+    ################## 爬取前首先自己修改下时间 ####################
+    h = 0     # 设置开始爬取的小时
+    m = 22     # 设置开始爬取的分钟
+    v = 14  # 设置文件名后缀起始编号，0
+    ############################################################
     while True:
         now = datetime.datetime.now()
         if now.hour == h and now.minute == m:

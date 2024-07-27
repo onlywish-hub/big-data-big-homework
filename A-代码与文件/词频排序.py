@@ -3,11 +3,11 @@
 # @File:词频排序.py
 # @Software:PyCharm
 
-with open('../词频统计结果/outcome.txt', 'r', encoding='utf-8') as f:
+with open('../词频统计结果/out.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
 dic = {}
 for line in lines[:-1]:
-    lk = line.strip("\n").split("\t")
+    lk = line.strip("\n").split()
     dic[lk[0]] = dic.get(lk[0],int(lk[1]))
 li = list(dic.items())
 li.sort(key=lambda x:x[1],reverse=True)
