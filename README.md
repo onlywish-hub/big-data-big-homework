@@ -27,7 +27,7 @@
 
 >  博客细节参考：https://blog.csdn.net/m0_59310933/article/details/131205216
 
-##### 1、安装所需要的工具包，提示缺什么就安装什么，pip install  包名
+##### 1、安装所需要的工具包，pip install -r requirements.txt  ，或者提示缺什么就安装什么，pip install  包名 
 
 ##### 2、下载msedgedriver.exe这个很重要，我用的edge浏览器，所以下载的这个，其他浏览器同样要找适配的。
 

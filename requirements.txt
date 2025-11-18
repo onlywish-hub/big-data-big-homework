@@ -1,0 +1,6 @@
+requests
+lxml
+selenium
+jieba
+opencv-python
+wordcloud
