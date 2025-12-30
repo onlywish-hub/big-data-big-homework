@@ -18,25 +18,33 @@ def getCon(v):
     browser.implicitly_wait(1800)  # 默认300秒
     page_text = browser.page_source
     tree = etree.HTML(page_text)
-    li_list = tree.xpath('//*[@id="root"]/div/div[6]/div[2]/div[2]/div[2]')
 
+    # 原来精度过深，导致路径不具有普适性 li_list = tree.xpath('//*[@id="root"]/div/div[6]/div[2]/div[2]/div[2]')
+    # 修改后：下面注释掉的可以获取页面所有新闻文本
+    # li_list = tree.xpath('//div[contains(@class, "news_list")] | //div[contains(@class, "index_news_list")]')
+    # 下面是获取中间一栏新闻文本，可以选择left,center,right进行切换
+    li_list = tree.xpath('//div[contains(@class, "center_box")]')
     fo = open('../爬取新闻结果/XinWen{}.txt'.format(v), 'w', encoding='utf-8')
     ls = []
     for li in li_list:
-        # con = li.xpath('./p[@class="news_list_p-3EcL2Tvk "]/a/@href')
-        # 上面这个是原来的，发现不能用了，只要修改这个 xpath 的路径就好。
-        # con = li.xpath('./p[@class="index_news_list_p78SU "]/a/@href')  左边新闻备选
-        con = li.xpath('./p[@class="index_news_list_p_5zOEF "]/a/@href')
+        # 若要获取第一个list，可以使用下标指定li_list[0]
+        # 只要 p 标签类名包含 news_list 就行能获取所有
+        # con = li.xpath('.//p[contains(@class, "news_list")]/a/@href')
+        # 获取具体一个方框内的文本，可以在详细一点路径
+        # con = li.xpath('.//p[contains(@class, "news_list_p_5zOEF")]/a/@href')
+        con = li.xpath('.//p[contains(@class, "news_list")]/a/@href')
         print(len(con),"条新闻")
         for i in range(len(con)):
             htt = "" + con[i]
             browser.get(htt)
+            browser.implicitly_wait(10)  # 确保元素有时间加载
             text = browser.page_source
             ee = etree.HTML(text)
-            # lis = ee.xpath('//*[@id="root"]/div/div[2]/div[2]/div/div[1]/div/div/div[1]') 这个是原来的，若有链接，但没有输出文本，只要修改这个就行
-            lis = ee.xpath('//*[@id="root"]/div/div[2]/div[2]/div/div[1]/div/div/div/div[1]')
+            # lis = ee.xpath('//*[@id="root"]/div/div[2]/div[2]/div/div[1]/div/div/div[1]')
+            # 上面这个是原来的，精细控制，但是不具备普适性，下面已进行修改
+            lis = ee.xpath('//div[contains(@class, "main_content")]')
             for j in lis:
-                ls.append(j.xpath('./p/text()'))
+                ls.append(j.xpath('.//p/text()'))
         print(con)
         print(ls)
     ans = ''
@@ -50,8 +58,8 @@ def getCon(v):
 def main():     #建议将 h 设置为0或6或12或18 获取新闻文本几乎不会重复
     print("开始准备爬取了，等待时间到达指定时间~~~")
     ################## 爬取前首先自己修改下时间 ####################
-    h = 0     # 设置开始爬取的小时
-    m = 22     # 设置开始爬取的分钟
+    h = 16     # 设置开始爬取的小时
+    m = 18     # 设置开始爬取的分钟
     v = 14  # 设置文件名后缀起始编号，0
     ############################################################
     while True:
